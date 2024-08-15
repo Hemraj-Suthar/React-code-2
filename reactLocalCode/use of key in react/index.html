@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="babel.js"></script>
+    <script src="react.js"></script>
+    <script src="reactdom.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const App = () => {
+            const [items, setitem] = useState([
+                { id: 1, text: 'Item 1' },
+                { id: 2, text: 'Item 2' },
+                { id: 3, text: 'Item 3' }
+            ]);
+
+            const updateItems = () => {
+                setitem([
+                    { id: 1, text: 'Item 1' },
+                    { id: 3, text: 'Item 3' },
+                    { id: 2, text: 'Item 2' }
+                ])
+            }
+
+            return (
+                <div>
+                    <ul>
+                        {items.map((item) => <li key={item.id}> {item.text}</li> )}
+                    </ul>
+                    <button onClick={updateItems}>Update List</button>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

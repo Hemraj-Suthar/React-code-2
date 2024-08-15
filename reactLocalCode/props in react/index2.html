@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="babel.js"></script>
+    <script src="react.js"></script>
+    <script src="reactdom.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Notification({message, isSpam}) {
+            if (isSpam) {
+                return null;
+            }
+            
+            return (<h1>{message}</h1>);
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Notification message='Hii kese ho' isSpam={true} />
+                    <Notification message='App kese ho' isSpam={false} />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

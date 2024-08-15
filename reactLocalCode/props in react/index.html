@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="babel.js"></script>
+    <script src="react.js"></script>
+    <script src="reactdom.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Tribute(props) {
+            return (
+                    <p>Name of Tribute: <h1>{props.name}</h1></p>
+            );
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Tribute name='Maharana Pratap' />
+                    <Tribute name='Shivaji Maharaj' />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

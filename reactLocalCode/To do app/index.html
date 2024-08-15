@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do App</title>
+    <link rel="stylesheet" href="app.css">
+    <script src="babel.js"></script>
+    <script src="react.js"></script>
+    <script src="reactdom.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        function list({list, deleteItem, editItem}) {
+            console.log(list);
+            return (
+                <>
+                    {list.map((item, index) => (
+                        <li key={index} className="list-item">
+                            {item.value}
+                            <div className="button-group">
+                                <button onClick={() => deleteItem(item.id)} className="delete-button">Delete</button>
+                                <button onClick={() => editItem(index)} className="edit-button">Edit</button>
+                            </div>
+                        </li>
+                    ))}
+                </>
+            );
+        }
+
+        const App = () => {
+            const [userInput, setUserInput] = useState("");
+            const [list, setList] = useState([]);
+
+            const addItem = () => {
+                if (userInput !== "") {
+                    const userInputItem = {
+                        id: Math.random(),
+                        value: userInput,
+                    };
+                    setList([...list, userInputItem]);
+                    setUserInput("");       
+                }
+            };
+
+            const deleteItem = (key) => {
+                const updateList = list.filter((item) => item.id !== key);
+                setList(updateList);
+            };
+
+            const editItem = (index) => {
+                const editedTodo = prompt("Edit the todo:");
+                if (editedTodo !== null && editedTodo.trim() !== "") {
+                    const updatedList = [...list];
+                    updatedList[index].value = editedTodo;
+                    setList(updatedList);
+                }
+            };
+
+            return (
+                <div className="container">
+                    <div className="header">TODO LIST</div>
+                    <br />
+                    <br />
+                    <div className="input-section">
+                        <input type="text" placeholder="Add item..." value={userInput} onChange={(e) => setUserInput(e.target.value)} className="input-box" />
+                        <button onClick={addItem} className="add-button">Add Task</button>
+                    </div>
+                    <ul className="list">
+                       <list list={list} deleteItem={deleteItem} editItem={editItem} />
+                    </ul>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

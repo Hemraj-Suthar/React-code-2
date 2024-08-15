@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="babel.js"></script>
+    <script src="react.js"></script>
+    <script src="reactdom.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const App = () => {
+            const [todos, setTodos] = useState([]);
+            const [input, setInput] = useState('');
+
+            const addTodo = () => {
+                setTodos([...todos, input]);
+                setInput('');
+            };
+
+            const removeTodo = (index) => {
+                const newTodos = todos.filter((todo, i) => i !== index);
+                setTodos(newTodos);
+            };
+
+            const css = {
+                color: "red",
+                padding: "20px 0"
+            }
+
+            return (
+                <div>
+                    <h1 style={css}>Todo List</h1>
+                    <input value={input} onChange={(e) => setInput(e.target.value)} />
+                    <button onClick={addTodo}>Add</button>
+                    <ul>
+                        {todos.map((todo, index) => (
+                        <li key={index}>
+                            {todo} <button onClick={() => removeTodo(index)}>Remove</button>
+                        </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

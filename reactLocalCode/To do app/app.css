@@ -1,0 +1,58 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    font-size: 3rem;
+    font-weight: bolder;
+  }
+  
+  .input-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-box {
+    font-size: 1.5rem;
+    padding: 10px;
+    flex-grow: 1;
+  }
+  
+  .add-button {
+    font-size: 1.5rem;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-item {
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+  
+  .button-group {
+    display: flex;
+  }
+  
+  .delete-button,
+  .edit-button {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  

@@ -1,0 +1,26 @@
+.App-container {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    padding: 20px 50px;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+
+button.btn.btn-primary.mt-2 {
+    border: none;
+    background-color: blueviolet;
+    padding: 5px 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.App {
+    text-align: center;
+}
+

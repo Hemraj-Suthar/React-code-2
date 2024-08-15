@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="babel.js"></script>
+    <script src="react.js"></script>
+    <script src="reactdom.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const App = () => {
+            const [inputs, setInputs] = useState({});
+
+            const handleChange = (event) => {
+                const name = event.target.name;
+                const value = event.target.value;
+                setInputs(values => ({...values, [name]: value}))
+            }
+
+            const handleSubmit = (event) => {
+                event.preventDefault();
+                console.log(inputs);
+            }
+
+            return (
+                <form onSubmit={handleSubmit}>
+                    <label>Enter your name:
+                        <input type="text" name="username" value={inputs.username} onChange={handleChange} />
+                    </label>
+                    <br/><br/>
+                    <label>Enter your age:
+                        <input type="number" name="age" value={inputs.age}  onChange={handleChange} />
+                    </label>
+                    <br/><br/>
+                    <input type="submit" />
+                </form>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
